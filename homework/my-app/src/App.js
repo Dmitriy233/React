@@ -2,63 +2,78 @@
 import React from 'react';
 import './App.css';
 
-const Home = (props) => {
-
+const Home = () => {
   return <div>Home page</div>;
 };
 
-const News = (props) => {
-  return <div>News page</div>;
+const News = () => {
+  return <div>News page</div>
 };
-const CallBack = (props) => {
+
+const CallBack = () => {
   return <div>CallBack page</div>;
 };
-const Contacts = (props) => {
+
+const Contacts = () => {
   return <div>Contacts page</div>;
 };
 
+const navList = [
+  {
+    id: 1,
+    title: "Home",
+    content: Home(),
+  },
+  {
+    id: 2,
+    title: "News",
+    content: News(),
+  },
+  {
+    id: 3,
+    title: "CallBack",
+    content: CallBack(),
+  },
+  {
+    id: 4,
+    title: "Contacts",
+    content: Contacts(),
+  },
+];
+
 class App extends React.Component {
-  state = { currentPage: "" };
-//
-//
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: navList[0].content,
+    };
+  };
+
+  selectPage = (props) => {
+    this.setState({ currentPage: props });
+  }
+
   Nav = () => {
     return (
-      <nav>
-        <ul>
-          <li> <a onClick={this.selectHome} href="#">Home</a> </li>
-          <li> <a onClick={this.selectNews} href="#">News</a> </li>
-          <li> <a onClick={this.selectCallBack} href="#">CallBack</a> </li>
-          <li> <a onClick={this.selectContacts} href="#">Contacts</a> </li>
-        </ul>
-      </nav>
+      <>
+        <nav>
+          <ul>
+            {navList.map(({ id, title, content }) => (
+              <li key={id}><a onClick={(e) => this.selectPage(content)} href="#">{title}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <div className='content'>{this.state.currentPage}</div>
+      </>
     );
-  }
-
-  selectHome = () => {
-    this.setState({ currentPage: this.state.currentPage = <Home/> })
-  }
-
-  selectNews = () => {
-    this.setState({ currentPage: this.state.currentPage = <News/> })
-  }
-
-  selectCallBack = () => {
-    this.setState({ currentPage: this.state.currentPage = <CallBack/> })
-  }
-
-  selectContacts = () => {
-    this.setState({ currentPage: this.state.currentPage = <Contacts/> })
-  }
-
+  };
   render() {
     return (
       <div>
-        <this.Nav/>
-        <div className='content'>{this.state.currentPage}</div>
+        <this.Nav />
       </div>
-    )
-  }
-
-}
+    );
+  };
+};
 
 export default App;
