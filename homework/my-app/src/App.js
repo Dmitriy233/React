@@ -22,22 +22,22 @@ const navList = [
   {
     id: 1,
     title: "Home",
-    content: Home(),
+    content: <Home />,
   },
   {
     id: 2,
     title: "News",
-    content: News(),
+    content: <News />,
   },
   {
     id: 3,
     title: "CallBack",
-    content: CallBack(),
+    content: <CallBack />,
   },
   {
     id: 4,
     title: "Contacts",
-    content: Contacts(),
+    content: <Contacts />,
   },
 ];
 
@@ -45,7 +45,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: navList[0].content,
+      currentPage: navList[0].title,
     };
   };
 
@@ -53,25 +53,25 @@ class App extends React.Component {
     this.setState({ currentPage: props });
   }
 
-  Nav = () => {
+  renderPageContent = () => {
+    const findObj = navList.find(item => item.title === this.state.currentPage)
+    return findObj.content
+  }
+
+  render() {
     return (
       <>
         <nav>
           <ul>
-            {navList.map(({ id, title, content }) => (
-              <li key={id}><a onClick={(e) => this.selectPage(content)} href="#">{title}</a></li>
+            {navList.map(({ id, title }) => (
+              <li key={id}><a onClick={(e) => this.selectPage(title)} href="#">{title}</a></li>
             ))}
           </ul>
         </nav>
-        <div className='content'>{this.state.currentPage}</div>
+        <div className='content'>
+          {this.renderPageContent()}
+        </div>
       </>
-    );
-  };
-  render() {
-    return (
-      <div>
-        <this.Nav />
-      </div>
     );
   };
 };
