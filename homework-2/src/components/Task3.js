@@ -12,6 +12,9 @@ export default class LifecycleMethods extends React.Component {
         this.setState({ title: "другая страница" })
     };
 
+    componentDidMount(){
+        document.title = this.state.title
+    }
     componentDidUpdate() {
         document.title = this.state.title
     };
@@ -19,7 +22,7 @@ export default class LifecycleMethods extends React.Component {
     render() {
         return (
             <>
-                {document.title = this.state.title}
+                
                 <button onClick={this.handleClick}>Click</button>
             </>
         );

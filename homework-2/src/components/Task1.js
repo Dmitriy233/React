@@ -12,13 +12,7 @@ const UserCard = ({ name, surName, age }) => {
 };
 
 const UserCardText = (props) => {
-    const validateAge = () => {
-        if (props.age >= 18) {
-            return <span>могу</span>
-        } else {
-            return <span>не могу</span>
-        }
-    };
+    const validateAge = () => props.age >= 18 ? "могу" : "не могу"
 
     return (
         <>
