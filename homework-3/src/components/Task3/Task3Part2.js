@@ -3,22 +3,16 @@ import myVideo from '../media/shortVideo.mp4'
 
 const VideoPlayer = () => {
     const [duration, setDuration] = useState('')
-    const playerRef = React.useRef()
-    const buttonRef = React.useRef()
+    const [buttonPlay, setButtonPlay] = useState('Play')
+    const playerRef = React.useRef(null)
 
     const handleMetadata = event => {
-        setDuration(Math.floor(event.target.duration))
+        setDuration(Math.floor(playerRef.current.duration))
     }
 
-    const handleClick = () => {
-        if (buttonRef.current.innerText === "Play") {
-            playerRef.current.play()
-            buttonRef.current.innerText = "Pause"
-
-        } else {
-            playerRef.current.pause()
-            buttonRef.current.innerText = "Play"
-        }
+    const handleClick = (event) => {
+        setButtonPlay('Pause')
+        buttonPlay === 'Play' ? playerRef.current?.play() : playerRef.current.pause() || setButtonPlay('Play')
     }
 
     return (
@@ -27,7 +21,7 @@ const VideoPlayer = () => {
                 <source src={myVideo} />
             </video>
             <div>
-                <button ref={buttonRef} onClick={handleClick}>Play</button>
+                <button onClick={handleClick}>{buttonPlay}</button>
                 <span>00:00:{duration}</span>
             </div>
         </div>

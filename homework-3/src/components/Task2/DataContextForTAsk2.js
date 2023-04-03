@@ -8,8 +8,11 @@ export const ContextForTask2Provider = (props) => {
         fetch("https://jsonplaceholder.typicode.com/albums")
             .then(res => res.json())
             .then(
-                (result) => setAlbums(result));
-    })
+                (result) => setAlbums(result))
+            .catch(error => {
+                console.log(error.message)
+            })
+    }, [])
     return (
         <ContextForTask2.Provider value={albums}>
             {props.children}

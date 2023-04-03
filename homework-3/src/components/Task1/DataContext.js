@@ -19,14 +19,14 @@ export class AlbumsProvider extends React.Component {
                         isLoaded: true,
                         albums: result
                     });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
+                })
+            .catch(error => {
+                this.setState({
+                    isLoaded: true,
+                    error
+                });
+                console.log(error.message)
+            })
     }
     render() {
         return (
