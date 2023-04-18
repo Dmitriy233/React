@@ -1,17 +1,21 @@
 import React from "react";
-// import ProductCard from "./ProductCard";
 
-const ToolTip = ({x, y, content:{name}}) => {
-
-
+const Tooltip = ({ tooltipX, tooltipY, content}) => {
     return (
-        <div  style={{position: "absolute", background: "red", left: x, top: y }} >
-            
-            <p>{name}</p>
-            {/* <p>{price}</p> */}
-            {/* <p>rating: count:{count}, rate: {rate}</p> */}
-        </div>
-
-    )
-}
-export default ToolTip
+         <div
+      style={{
+        position: 'fixed',
+        left: tooltipX+5,
+        top: tooltipY+5,
+        backgroundColor: 'white',
+        padding: '10px',
+        zIndex: 5,
+        borderRadius: '4px',
+        boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.3)',
+      }}
+    >
+      {content}
+    </div>
+    );
+};
+export default Tooltip

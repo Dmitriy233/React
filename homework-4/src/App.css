@@ -1,0 +1,63 @@
+header {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin-right: 30px
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.productCard {
+    max-width: 300px;
+    text-align: center;
+    margin: 30px 20px 30px 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+
+
+}
+
+.productImg {
+    width: 300px;
+    height: 300px;
+}
+
+.active {
+    color: red;
+}
+
+.button {
+    background: none;
+    border: none;
+}
+
+.arrow {
+    width: 30px;
+    height: 30px
+}
+
+.arrow-forward {
+    transform: rotate(180deg);
+}

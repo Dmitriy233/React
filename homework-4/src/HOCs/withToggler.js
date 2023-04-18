@@ -6,7 +6,6 @@ export const withToggler = (WrappedComponent) => {
 
         const changeToggle = (e) => {
             setButtonToggled(prev => !prev)
-            console.log(e.target.innerText)
         }
         return <WrappedComponent {...props} toggled={buttonToggled} changeToggle={changeToggle} />
     }

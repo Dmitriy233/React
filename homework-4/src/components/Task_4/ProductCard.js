@@ -1,46 +1,58 @@
 import { useState } from "react";
-import ToolTip from "./Tooltip";
+import Tooltip from "./Tooltip";
 
-const ProductCard = ({ products, render }) => {
-    const [isTooltipShown, setIsTooltipShown] = useState(false)
-    const [tooltipX, setTooltipX] = useState(0)
-    const [tooltipY, setTooltipY] = useState(0)
+const ProductCard = ({ product, isLoading, error }) => {
 
-    const handleTooltipEnter = () => {
-        setIsTooltipShown(true)
-    }
+    const [position, setPosition] = useState({ tooltipX: 0, tooltipY: 0 })
 
-    const handleTooltipLeave = () => {
-        setIsTooltipShown(false)
-    }
 
-    const handlerMouseMove = (e) => {
-        setTooltipX(e.clientX)
-        setTooltipY(e.clientY)
-    }
+    const [isTooltipShown, setTooltipShown] = useState(false);
+
+    const handleMouseMove = (e) => {
+
+        setPosition({ tooltipX: e.clientX, tooltipY: e.clientY })
+    };
+
+    const handleMouseEnter = e => {
+        setTooltipShown(true);
+        setPosition({ tooltipX: e.clientX, tooltipY: e.clientY })
+
+    };
+
+    const handleMouseLeave = () => {
+        setTooltipShown(false);
+    };
+
     return (
-        <>
-            {products.map(product =>  <li key={product.id}
-                onMouseMove={handlerMouseMove}
-                onMouseEnter={handleTooltipEnter}
-                onMouseLeave={handleTooltipLeave}
-                style={{
-                    listStyle: "none",
-                    width: 300,
-                    background: "pink",
-                    position: "relative"
-                }}>
 
-                <img src={product.image} alt="" width={200} height={200} />
-                <h5>{product.title}</h5>
-                <p>{product.description}</p>
-                <hr />
-            </li> )}
-                  
-            {isTooltipShown && <ToolTip x={tooltipX} y={tooltipY} content={products}>
-              {render(products)}
-            </ToolTip>}
-            
+        <div className="productCard" style={{ position: 'relative' }}>
+            <img className="productImg"
+                src={product.image}
+                alt={product.title}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+            />
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            {isLoading && <div>LOading...</div>}
+            {error && <div>Error: {error}</div>}
+            {isTooltipShown && (
+                <Tooltip
+                    tooltipX={position.tooltipX}
+                    tooltipY={position.tooltipY}
+                    content={
+                        <div>
+                            <h3>{product.title}</h3>
+                            <p>Price: {product.price}USD</p>
+                            <p>Rating: count {product.rating.count}, rate {product.rating.rate}</p>
+                        </div>
+                    }
+                />
+            )}
+        </div>
+    );
+};
 
 
 
@@ -51,7 +63,11 @@ const ProductCard = ({ products, render }) => {
 
 
 
-  {/* // контейнер для тултипа
+
+
+
+
+{/* // контейнер для тултипа
                         <li
                             onMouseMove={handlerMouseMove}
                             onMouseEnter={handleTooltipEnter}
@@ -70,9 +86,4 @@ const ProductCard = ({ products, render }) => {
                         </li> */}
 
 
-
-        </>
-
-    )
-}
 export default ProductCard
