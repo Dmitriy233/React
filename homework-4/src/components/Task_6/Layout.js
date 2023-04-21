@@ -1,5 +1,44 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import arrow from '../img/arrow.png'
+import { NavLink, useNavigate } from 'react-router-dom'
+import arrow from '../../assets/arrow.png'
+
+const links = [
+    {
+        id: "1",
+        link: "/",
+        title: "Main Page"
+    },
+    {
+        id: "2",
+        link: "/description",
+        title: "Description"
+    },
+    {
+        id: "3",
+        link: "/task1",
+        title: "Task1"
+    },
+    {
+        id: "4",
+        link: "/task2",
+        title: "Task2"
+    },
+    {
+        id: "5",
+        link: "/task3",
+        title: "Task3"
+    },
+    {
+        id: "6",
+        link: "/task4",
+        title: "Task4"
+    },
+    {
+        id: "7",
+        link: "/task5",
+        title: "Task5"
+    },
+];
+
 
 export const Layout = () => {
     const navigate = useNavigate()
@@ -9,7 +48,7 @@ export const Layout = () => {
 
     return (
         <>
-            <header>
+            {/* <header>
                 <nav>
                     <li ><NavLink to="/" >Main</NavLink></li>
                     <li ><NavLink to="/task_description">Task Description</NavLink></li>
@@ -22,7 +61,23 @@ export const Layout = () => {
                     <button className='button' onClick={goForward}><img className='arrow arrow-forward' src={arrow} alt="" /></button>
                 </nav>
             </header>
-            <Outlet />
+            <Outlet /> */}
+            <nav className="">
+                <ul className="nav-list">
+                    {links.map(({ id, link, title }) => (
+                        <li className="nav-item" key={id}>
+                            <NavLink
+                                to={link}
+                                className={({ isActive }) => (isActive ? "active" : "")}
+                            >
+                                {title}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+                    <button className='button' onClick={goBack}><img className='arrow' src={arrow} alt="" /></button>
+                    <button className='button' onClick={goForward}><img className='arrow arrow-forward' src={arrow} alt="" /></button>
+            </nav>
         </>
     )
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import UserInfo from './User'
-import Albums from "./Albums";
-import { userData } from "../../data/userData";
-import { albumData } from "../../data/albumData";
+import UserInfo from '../components/Task_1/User'
+import Albums from "../components/Task_1/Albums";
+import { userData } from "../data/userData";
+import { albumData } from "../data/albumData";
 
 
 const Task1 = () => {

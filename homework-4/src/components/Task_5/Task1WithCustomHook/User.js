@@ -8,9 +8,7 @@ export const User = ({
     phone,
     company: { name },
 }) => {
-
     const [isToggle, setToggle] = useToggler(false)
-
     return (
         <div>
             <p>{id}</p>

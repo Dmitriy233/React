@@ -43,7 +43,7 @@ nav li {
     width: 300px;
     height: 300px;
 }
-
+.task_active,
 .active {
     color: red;
 }
@@ -60,4 +60,11 @@ nav li {
 
 .arrow-forward {
     transform: rotate(180deg);
+}
+
+.nav-list{
+    display: flex;
+
+}
+.nav-item{
 }

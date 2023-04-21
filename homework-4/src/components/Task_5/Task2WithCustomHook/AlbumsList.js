@@ -5,7 +5,6 @@ const BASE_ALBUMS_URL = "https://jsonplaceholder.typicode.com/albums/1/photos?_l
 
 export const AlbumsList = () => {
     const [data, isLoading, error] = useFetch(BASE_ALBUMS_URL)
-
     return (
         <div>
             {isLoading && <div>LOading...</div>}

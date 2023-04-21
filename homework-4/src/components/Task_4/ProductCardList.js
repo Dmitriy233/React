@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 const ProductsList = ({ url }) => {
-
     const [dataProducts, setDataProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)

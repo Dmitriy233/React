@@ -2,21 +2,16 @@ import { useState } from "react";
 import Tooltip from "./Tooltip";
 
 const ProductCard = ({ product, isLoading, error }) => {
-
     const [position, setPosition] = useState({ tooltipX: 0, tooltipY: 0 })
-
-
     const [isTooltipShown, setTooltipShown] = useState(false);
 
     const handleMouseMove = (e) => {
-
         setPosition({ tooltipX: e.clientX, tooltipY: e.clientY })
     };
 
     const handleMouseEnter = e => {
         setTooltipShown(true);
         setPosition({ tooltipX: e.clientX, tooltipY: e.clientY })
-
     };
 
     const handleMouseLeave = () => {
@@ -24,7 +19,6 @@ const ProductCard = ({ product, isLoading, error }) => {
     };
 
     return (
-
         <div className="productCard" style={{ position: 'relative' }}>
             <img className="productImg"
                 src={product.image}

@@ -1,6 +1,6 @@
 import React from "react";
-import DataMaker from "./DataMaker";
-import Posts from "./Posts";
+import DataMaker from "../components/Task_3/DataMaker";
+import Posts from "../components/Task_3/Posts";
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=10"
 

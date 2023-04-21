@@ -1,6 +1,6 @@
 import React from "react";
-import UsersList from "./UsersList";
-import AlbumsList from "./AlbumsList";
+import UsersList from "../components/Task_2/UsersList";
+import AlbumsList from "../components/Task_2/AlbumsList";
 
 const BASE_USERS_URL = "https://jsonplaceholder.typicode.com/users?_limit=10";
 const BASE_ALBUMS_URL = "https://jsonplaceholder.typicode.com/albums/1/photos?_limit=10"

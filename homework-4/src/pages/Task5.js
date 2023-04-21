@@ -1,9 +1,9 @@
-import { albumData } from "../../data/albumData";
-import { userData } from "../../data/userData";
-import { Albums } from "./Task1WithCustomHook/Albums";
-import { User } from "./Task1WithCustomHook/User";
-import { Users } from "./Task2WithCustomHook/UsersList";
-import { AlbumsList } from "./Task2WithCustomHook/AlbumsList";
+import { albumData } from "../data/albumData";
+import { userData } from "../data/userData";
+import { Albums } from "../components/Task_5/Task1WithCustomHook/Albums";
+import { User } from "../components/Task_5/Task1WithCustomHook/User";
+import { Users } from "../components/Task_5/Task2WithCustomHook/UsersList";
+import { AlbumsList } from "../components/Task_5/Task2WithCustomHook/AlbumsList";
 const Task5 = () => {
     return (
         <>
